@@ -2,10 +2,10 @@ class Config(object):
     pass
 
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql://admin:admin@localhost/blog_dev'
+    SQLALCHEMY_DATABASE_URI = 'mysql://blog:blog@localhost/blog_dev'
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql://admin:admin@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'mysql://blog:blog@localhost/blog'
 
 config = {
     'development': DevelopmentConfig,
