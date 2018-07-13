@@ -25,3 +25,8 @@ db.create_all()
 db.drop_all()
 ```
 
+## 运行
+```
+export FLASK_APP=blog.py
+flask run
+```

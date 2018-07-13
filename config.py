@@ -1,5 +1,5 @@
 class Config(object):
-    pass
+    SECRET_KEY = 'yushizhan'
 
 class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql://blog:blog@localhost/blog_dev'
