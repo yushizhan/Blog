@@ -18,7 +18,8 @@ def register():
 
 @auth.route('/logout')
 def logout():
-    pass
+    session.pop('username', None)
+    return redirect(url_for('main.index'))
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -26,6 +27,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is not None and user.verify_password(form.password.data):
+            session['username'] = form.username.data
             return redirect(url_for('main.index'))
         else:
             flash("account not exist!")
