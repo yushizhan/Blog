@@ -1,6 +1,6 @@
 from . import auth
 from .. import db
-from ..models import User
+from ..models import *
 from flask import *
 from forms import RegisterForm, LoginForm
 
@@ -24,9 +24,10 @@ def logout():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('main.index'))
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            return redirect(url_for('main.index'))
+        else:
+            flash("account not exist!")
     return render_template("login.html", form=form)
     
