@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from config import config
+from config import CONFIG
 
 
 bootstrap = Bootstrap()
@@ -11,7 +11,7 @@ def create_app(config_name):
     app = Flask(__name__)
 
     # Config
-    app.config.from_object(config[config_name])
+    app.config.from_object(CONFIG[config_name])
 
     # Plugins
     bootstrap.init_app(app)

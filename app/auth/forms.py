@@ -1,10 +1,10 @@
 #encoding=utf8
 
 from flask_wtf import FlaskForm
-from wtforms import *
-from wtforms.validators import *
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Length, Regexp, Email, EqualTo
 from wtforms import ValidationError
-from ..models import *
+from ..models import User
 
 class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
@@ -13,7 +13,7 @@ class RegisterForm(FlaskForm):
     password2 = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password', message='password must be eual')])
     submit = SubmitField('Register')
 
-    # Handle all validate in Forms    
+    # Handle all validate in Forms
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Email already registered.')

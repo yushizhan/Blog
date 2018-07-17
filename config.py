@@ -7,7 +7,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql://blog:blog@localhost/blog'
 
-config = {
+CONFIG = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
     'default': DevelopmentConfig
