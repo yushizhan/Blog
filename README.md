@@ -47,3 +47,9 @@ db.drop_all()
 export FLASK_APP=blog.py
 flask run
 ```
+
+## uWSGI
+```
+# Enter project path
+uwsgi --ini runtime/blog.ini
+```
